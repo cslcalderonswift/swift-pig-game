@@ -10,11 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var rollNumberDisplay: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func rollRandomNumber(_ sender: Any) {
+        
+    }
     
     func getRandomNumber () -> Int {
         let randomNum = Int.random(in: 0..<5)
