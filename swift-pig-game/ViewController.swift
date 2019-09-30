@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var rollNumberDisplay: UILabel!
+    @IBOutlet weak var playerTwoPoints: UILabel!
+    @IBOutlet weak var playerOnePoints: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
