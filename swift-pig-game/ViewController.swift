@@ -10,9 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var rollNumberDisplay: UILabel!
     @IBOutlet weak var playerTwoPoints: UILabel!
     @IBOutlet weak var playerOnePoints: UILabel!
+    @IBOutlet weak var messageDisplay: UILabel!
+    
+    var newGame = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +23,13 @@ class ViewController: UIViewController {
     
     @IBAction func rollRandomNumber(_ sender: Any) {
         
+    }
+    
+    func introduction (){
+        if newGame {
+            messageDisplay.text = "Player One, roll or finish turn!"
+        }
+        newGame.toggle()
     }
     
     func getRandomNumber () -> Int {
