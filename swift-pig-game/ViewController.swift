@@ -15,15 +15,46 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageDisplay: UILabel!
     
     var newGame = true
+    var playerOnePlaying = true
+    var playerTwoPlaying = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageDisplay.numberOfLines = 0
         // Do any additional setup after loading the view.
     }
     
     @IBAction func rollRandomNumber(_ sender: Any) {
-        
+        messageDisplay.text = "\(getRandomNumber())"
     }
+    
+    @IBAction func finishTurn(_ sender: Any) {
+        if playerOnePlaying {
+            handlePlayerOneFinish()
+        }else {
+            handlePlayerTwoFinish()
+        }
+    }
+    
+    func handlePlayerOneFinish(){
+        playerOnePlaying.toggle()
+        playerTwoPlaying.toggle()
+        messageDisplay.text = "Player One has ended their turn"
+    }
+    
+    func handlePlayerTwoFinish(){
+        playerTwoPlaying.toggle()
+        playerOnePlaying.toggle()
+        messageDisplay.text = "Player Two has ended their turn"
+    }
+    
+    func introduction (){
+        if newGame {
+            messageDisplay.text = "Player One, roll or finish turn!"
+        }
+        newGame.toggle()
+    }
+    
     
     func introduction (){
         if newGame {
