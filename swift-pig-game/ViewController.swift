@@ -56,13 +56,6 @@ class ViewController: UIViewController {
     }
     
     
-    func introduction (){
-        if newGame {
-            messageDisplay.text = "Player One, roll or finish turn!"
-        }
-        newGame.toggle()
-    }
-    
     func getRandomNumber () -> Int {
         let randomNum = Int.random(in: 0..<5)
         
