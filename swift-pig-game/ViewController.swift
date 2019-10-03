@@ -74,15 +74,19 @@ class ViewController: UIViewController {
         playerTwoPoints.text = "0"
         storedPointsPerRound = 0
         goalDisplay.text = "Try to get to \(goal)!"
+        
+        changeMessageDisplayForPlayerOne()
         messageDisplay.text = "Player One, roll or finish turn!"
         storedPoints.text = "Try to reach the goal before the other player. If you roll a 1, you will lose all points accumulated in round. Good luck!"
     }
     
     func checkForGoal() -> Bool{
         if playerOnePointCount >= goal {
+            changeMessageDisplayForPrompting()
             messageDisplay.text = "Player One won!"
             return true
         }else if playerTwoPointCount >= goal {
+            changeMessageDisplayForPrompting()
             messageDisplay.text = "Player Two won!"
             return true
         }
@@ -106,12 +110,14 @@ class ViewController: UIViewController {
     func handlePlayerOneFinish(){
         playerOnePlaying.toggle()
         playerTwoPlaying.toggle()
+        changeMessageDisplayForPlayerTwo()
         messageDisplay.text = "Player One has ended their turn. Player Two, roll or finish turn."
     }
     
     func handlePlayerTwoFinish(){
         playerTwoPlaying.toggle()
         playerOnePlaying.toggle()
+        changeMessageDisplayForPlayerOne()
         messageDisplay.text = "Player Two has ended their turn. Player One, roll or finish turn."
     }
     
@@ -120,6 +126,7 @@ class ViewController: UIViewController {
         playerOnePoints.text = "\(playerOnePointCount)"
         
         if !checkForGoal() {
+            changeMessageDisplayForPlayerOne()
             messageDisplay.text = "Player One rolled \(points), they now have \(playerOnePointCount) points! Roll or Finish Turn."
         }else {
             endGameMessage()
@@ -132,6 +139,7 @@ class ViewController: UIViewController {
         playerTwoPoints.text = "\(playerTwoPointCount)"
         
         if !checkForGoal(){
+            changeMessageDisplayForPlayerTwo()
             messageDisplay.text = "Player Two rolled \(points), they now have \(playerTwoPointCount) points! Roll or Finish Turn."
         }else {
             endGameMessage()
@@ -149,6 +157,7 @@ class ViewController: UIViewController {
                        updateStoredPointsLabel()
                        handlePlayerOneAddPoints(points)
                    }else {
+                       changeMessageDisplayForPiggy()
                        messageDisplay.text = "Player One got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost! Player Two, it's your turn!"
                        playerOnePointCount -= storedPointsPerRound
                        playerOnePoints.text = "\(playerOnePointCount)"
@@ -165,6 +174,7 @@ class ViewController: UIViewController {
                              updateStoredPointsLabel()
                              handlePlayerTwoAddPoints(points)
                          }else {
+                            changeMessageDisplayForPiggy()
                              messageDisplay.text = "Player Two got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost! Player One, it's your turn!"
                              playerTwoPointCount -= storedPointsPerRound
                              playerTwoPoints.text = "\(playerTwoPointCount)"
@@ -175,6 +185,22 @@ class ViewController: UIViewController {
                          }
     }
     
+    func changeMessageDisplayForPlayerOne() {
+        messageDisplay.textColor = .magenta
+    }
+    
+    func changeMessageDisplayForPlayerTwo() {
+        messageDisplay.textColor = .gray
+    }
+    
+    func changeMessageDisplayForPrompting() {
+        messageDisplay.textColor = .magenta
+    }
+    
+    func changeMessageDisplayForPiggy() {
+        messageDisplay.textColor = .red
+    }
+
     
     
     

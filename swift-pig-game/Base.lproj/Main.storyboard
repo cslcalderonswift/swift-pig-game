@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gtv-UB-4UH">
-                                <rect key="frame" x="51" y="745" width="152" height="70"/>
+                                <rect key="frame" x="20" y="723" width="152" height="70"/>
                                 <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="40"/>
                                 <state key="normal" title="Roll">
                                     <color key="titleColor" red="0.85419971446700504" green="0.20175804952431398" blue="0.46450901743204476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -67,32 +67,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWi-El-Spb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWi-El-Spb">
                                 <rect key="frame" x="63" y="568" width="286" height="112"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dze-fs-uGU">
-                                <rect key="frame" x="242" y="757" width="111" height="47"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="47" id="LNw-Ts-3cC"/>
-                                    <constraint firstAttribute="width" constant="111" id="dTO-gT-mtu"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="40"/>
-                                <state key="normal" title="Finish">
-                                    <color key="titleColor" red="0.83675567601537948" green="0.18061585133482996" blue="0.46705784385092508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="finishTurn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6T6-VD-9ds"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zku-8W-fw2">
-                                <rect key="frame" x="35" y="244" width="131" height="32"/>
+                                <rect key="frame" x="35" y="244" width="168" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="baZ-iM-lHT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -101,7 +88,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="111" id="Ehb-aN-fHD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -115,6 +102,20 @@
                                     <action selector="startGameOver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XPu-ap-v9p"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dze-fs-uGU">
+                                <rect key="frame" x="275" y="734" width="111" height="47"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="LNw-Ts-3cC"/>
+                                    <constraint firstAttribute="width" constant="111" id="dTO-gT-mtu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="40"/>
+                                <state key="normal" title="Finish">
+                                    <color key="titleColor" red="0.83675567601537948" green="0.18061585133482996" blue="0.46705784385092508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="finishTurn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6T6-VD-9ds"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96846610307693481" green="0.8870425820350647" blue="0.92747873067855835" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -126,27 +127,22 @@
                             <constraint firstItem="Kd4-jF-ls0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="205" id="A0O-9G-qIE"/>
                             <constraint firstItem="Zku-8W-fw2" firstAttribute="top" secondItem="1Oa-qw-iNp" secondAttribute="bottom" constant="54" id="BIA-Sb-ZWP"/>
                             <constraint firstItem="1Oa-qw-iNp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="95" id="CFG-7F-emj"/>
-                            <constraint firstItem="GMG-OO-eVq" firstAttribute="leading" secondItem="gtv-UB-4UH" secondAttribute="leading" id="Cfg-zI-p2e"/>
+                            <constraint firstItem="GMG-OO-eVq" firstAttribute="leading" secondItem="gtv-UB-4UH" secondAttribute="leading" constant="31" id="Cfg-zI-p2e"/>
                             <constraint firstItem="XkG-hJ-4dZ" firstAttribute="leading" secondItem="Oau-v0-bVM" secondAttribute="leading" id="GbP-Qd-pAo"/>
-                            <constraint firstItem="TWi-El-Spb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="63" id="HLG-bw-Ezx"/>
                             <constraint firstItem="Kd4-jF-ls0" firstAttribute="trailing" secondItem="1gH-Gl-RDJ" secondAttribute="trailing" id="NOj-dg-ivS"/>
                             <constraint firstItem="DRO-lj-jb5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="102" id="Q5B-ir-STg"/>
-                            <constraint firstItem="gtv-UB-4UH" firstAttribute="top" secondItem="TWi-El-Spb" secondAttribute="bottom" constant="65" id="Qs1-3x-yky"/>
                             <constraint firstItem="M3K-M0-9rC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RdO-f8-LUQ"/>
-                            <constraint firstItem="dze-fs-uGU" firstAttribute="top" secondItem="TWi-El-Spb" secondAttribute="bottom" constant="77" id="Rrh-oC-G6F"/>
                             <constraint firstItem="GMG-OO-eVq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="Siv-J7-sUF"/>
                             <constraint firstItem="XkG-hJ-4dZ" firstAttribute="top" secondItem="Zku-8W-fw2" secondAttribute="bottom" constant="8" id="Ur5-02-O8c"/>
                             <constraint firstItem="XkG-hJ-4dZ" firstAttribute="centerY" secondItem="Kd4-jF-ls0" secondAttribute="centerY" id="WHS-Se-1pr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kd4-jF-ls0" secondAttribute="trailing" constant="109" id="Z92-0V-yCY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XkG-hJ-4dZ" secondAttribute="trailing" constant="183" id="a18-Q1-C9E"/>
                             <constraint firstItem="M3K-M0-9rC" firstAttribute="top" secondItem="Kd4-jF-ls0" secondAttribute="bottom" constant="85" id="bKU-j8-FVc"/>
-                            <constraint firstItem="gtv-UB-4UH" firstAttribute="baseline" secondItem="dze-fs-uGU" secondAttribute="firstBaseline" id="bcY-Rq-E8I"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zku-8W-fw2" secondAttribute="trailing" constant="248" id="dgM-29-YWD"/>
+                            <constraint firstItem="gtv-UB-4UH" firstAttribute="baseline" secondItem="dze-fs-uGU" secondAttribute="firstBaseline" constant="1" id="bcY-Rq-E8I"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zku-8W-fw2" secondAttribute="trailing" constant="211" id="dgM-29-YWD"/>
                             <constraint firstItem="Zku-8W-fw2" firstAttribute="leading" secondItem="XkG-hJ-4dZ" secondAttribute="leading" id="exn-GR-9IV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="DRO-lj-jb5" secondAttribute="bottom" constant="9" id="g94-MO-e6p"/>
-                            <constraint firstItem="TWi-El-Spb" firstAttribute="top" secondItem="M3K-M0-9rC" secondAttribute="bottom" constant="39" id="goy-KI-0uO"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TWi-El-Spb" secondAttribute="trailing" constant="65" id="i5m-AG-Ib4"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dze-fs-uGU" secondAttribute="trailing" constant="61" id="jen-ok-T4D"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dze-fs-uGU" secondAttribute="trailing" constant="28" id="jen-ok-T4D"/>
                             <constraint firstItem="XkG-hJ-4dZ" firstAttribute="trailing" secondItem="Oau-v0-bVM" secondAttribute="trailing" id="jzs-B9-9wK"/>
                             <constraint firstItem="Kd4-jF-ls0" firstAttribute="top" secondItem="GMG-OO-eVq" secondAttribute="bottom" constant="85" id="lMG-op-tjk"/>
                             <constraint firstItem="1Oa-qw-iNp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="88" id="oJE-Yt-BKP"/>
@@ -154,9 +150,9 @@
                             <constraint firstItem="GMG-OO-eVq" firstAttribute="centerX" secondItem="DRO-lj-jb5" secondAttribute="centerX" id="qOO-FV-rFX"/>
                             <constraint firstItem="Oau-v0-bVM" firstAttribute="centerY" secondItem="1gH-Gl-RDJ" secondAttribute="centerY" id="qy9-fX-Tpd"/>
                             <constraint firstItem="Zku-8W-fw2" firstAttribute="top" secondItem="GMG-OO-eVq" secondAttribute="bottom" constant="48" id="scT-1p-Qmw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gtv-UB-4UH" secondAttribute="bottom" constant="47" id="tOM-mj-JTS"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gtv-UB-4UH" secondAttribute="bottom" constant="69" id="tOM-mj-JTS"/>
                             <constraint firstItem="M3K-M0-9rC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="45" id="v6q-Y7-sH6"/>
-                            <constraint firstItem="dze-fs-uGU" firstAttribute="leading" secondItem="gtv-UB-4UH" secondAttribute="trailing" constant="39" id="yS8-Bo-MCS"/>
+                            <constraint firstItem="dze-fs-uGU" firstAttribute="leading" secondItem="gtv-UB-4UH" secondAttribute="trailing" constant="103" id="yS8-Bo-MCS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
