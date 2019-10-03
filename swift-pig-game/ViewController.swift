@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     var playerOnePointCount : Int = 0
     var playerTwoPointCount : Int = 0
     
+    var storedPointsPerRound = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         messageDisplay.numberOfLines = 0
@@ -32,14 +34,16 @@ class ViewController: UIViewController {
         let points = getRandomNumber()
         
         if playerOnePlaying {
-            handlePlayerOneAddPoints(points)
+           playerOneTurn(points)
+            
         }else {
-            handlePlayerTwoAddPoints(points)
+            playerTwoTurn(points)
         }
         
     }
     
     @IBAction func finishTurn(_ sender: Any) {
+        storedPointsPerRound = 0
         if playerOnePlaying {
             handlePlayerOneFinish()
         }else {
@@ -75,7 +79,37 @@ class ViewController: UIViewController {
     func handlePlayerTwoAddPoints(_ points: Int) {
         playerTwoPointCount += points
         playerTwoPoints.text = "\(playerTwoPointCount)"
-        messageDisplay.text = "Player One rolled \(points), they now have \(playerTwoPointCount) points! Roll or Finish Turn."
+        messageDisplay.text = "Player Two rolled \(points), they now have \(playerTwoPointCount) points! Roll or Finish Turn."
+    }
+    
+    func checkForOne(_ rolledNumber: Int) -> Bool{
+        return rolledNumber == 1
+    }
+    
+    func playerOneTurn(_ points: Int){
+        if !checkForOne(points){
+                       storedPointsPerRound += points
+                       handlePlayerOneAddPoints(points)
+                   }else {
+                       messageDisplay.text = "Player One got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost! Player Two, it's your turn!"
+                       playerOnePointCount -= storedPointsPerRound
+                       playerOnePoints.text = "\(playerOnePointCount)"
+                       playerOnePlaying = false
+                       storedPointsPerRound = 0
+                   }
+    }
+    
+    func playerTwoTurn(_ points: Int){
+        if !checkForOne(points){
+                             storedPointsPerRound += points
+                             handlePlayerTwoAddPoints(points)
+                         }else {
+                             messageDisplay.text = "Player Two got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost! Player One, it's your turn!"
+                             playerTwoPointCount -= storedPointsPerRound
+                             playerTwoPoints.text = "\(playerTwoPointCount)"
+                             playerTwoPlaying = false
+                             storedPointsPerRound = 0
+                         }
     }
     
     
