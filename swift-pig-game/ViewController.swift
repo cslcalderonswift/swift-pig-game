@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     var storedPointsPerRound = 0
     
-    let goal = 5
+    let goal = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
