@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerOnePoints: UILabel!
     @IBOutlet weak var messageDisplay: UILabel!
     @IBOutlet weak var storedPoints: UILabel!
+    @IBOutlet weak var goalDisplay: UILabel!
     
     var playerOnePlaying = true
     var playerTwoPlaying = false
@@ -29,31 +30,38 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         messageDisplay.numberOfLines = 0
         storedPoints.numberOfLines = 0
+        goalDisplay.numberOfLines = 0
         introduction()
         // Do any additional setup after loading the view.
     }
     
     @IBAction func rollRandomNumber(_ sender: Any) {
-        let points = getRandomNumber()
-        
-        if playerOnePlaying {
-           playerOneTurn(points)
+        if !checkForGoal() {
+            let points = getRandomNumber()
             
-        }else {
-            playerTwoTurn(points)
+            if playerOnePlaying {
+               playerOneTurn(points)
+                
+            }else {
+                playerTwoTurn(points)
+            }
         }
+        
         
         
     }
     
     @IBAction func finishTurn(_ sender: Any) {
-        clearStoredPointsLabel()
-        storedPointsPerRound = 0
-        if playerOnePlaying {
-            handlePlayerOneFinish()
-        }else {
-            handlePlayerTwoFinish()
+        if !checkForGoal(){
+            clearStoredPointsLabel()
+            storedPointsPerRound = 0
+            if playerOnePlaying {
+                handlePlayerOneFinish()
+            }else {
+                handlePlayerTwoFinish()
+            }
         }
+        
     }
     
     func checkForGoal() -> Bool{
@@ -82,6 +90,7 @@ class ViewController: UIViewController {
     func introduction (){
         playerOnePointCount = 0
         playerTwoPointCount = 0
+        goalDisplay.text = "Try to get to \(goal)!"
         messageDisplay.text = "Player One, roll or finish turn!"
     }
     
