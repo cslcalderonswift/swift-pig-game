@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var playerTwoPoints: UILabel!
     @IBOutlet weak var playerOnePoints: UILabel!
     @IBOutlet weak var messageDisplay: UILabel!
+    @IBOutlet weak var storedPoints: UILabel!
     
-    var newGame = true
     var playerOnePlaying = true
     var playerTwoPlaying = false
     
@@ -23,9 +23,12 @@ class ViewController: UIViewController {
     
     var storedPointsPerRound = 0
     
+    let goal = 20
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         messageDisplay.numberOfLines = 0
+        storedPoints.numberOfLines = 0
         introduction()
         // Do any additional setup after loading the view.
     }
@@ -40,9 +43,11 @@ class ViewController: UIViewController {
             playerTwoTurn(points)
         }
         
+        
     }
     
     @IBAction func finishTurn(_ sender: Any) {
+        clearStoredPointsLabel()
         storedPointsPerRound = 0
         if playerOnePlaying {
             handlePlayerOneFinish()
@@ -51,11 +56,33 @@ class ViewController: UIViewController {
         }
     }
     
-    func introduction (){
-        if newGame {
-            messageDisplay.text = "Player One, roll or finish turn!"
+    func checkForGoal() -> Bool{
+        if playerOnePointCount >= goal {
+            messageDisplay.text = "Player One won!"
+            return true
+        }else if playerTwoPointCount >= goal {
+            messageDisplay.text = "Player Two won!"
+            return true
         }
-        newGame.toggle()
+        
+        return false
+    }
+    func updateStoredPointsLabel(){
+        storedPoints.text = "Points per turn: \(storedPointsPerRound)"
+    }
+    
+    func clearStoredPointsLabel() {
+        storedPoints.text = "Play your turn!"
+    }
+    
+    func endGameMessage () {
+        storedPoints.text = "Click Start Over to Play Again!"
+    }
+    
+    func introduction (){
+        playerOnePointCount = 0
+        playerTwoPointCount = 0
+        messageDisplay.text = "Player One, roll or finish turn!"
     }
     
     func handlePlayerOneFinish(){
@@ -73,13 +100,25 @@ class ViewController: UIViewController {
     func handlePlayerOneAddPoints(_ points: Int) {
         playerOnePointCount += points
         playerOnePoints.text = "\(playerOnePointCount)"
-        messageDisplay.text = "Player One rolled \(points), they now have \(playerOnePointCount) points! Roll or Finish Turn."
+        
+        if !checkForGoal() {
+            messageDisplay.text = "Player One rolled \(points), they now have \(playerOnePointCount) points! Roll or Finish Turn."
+        }else {
+            endGameMessage()
+        }
+        
     }
     
     func handlePlayerTwoAddPoints(_ points: Int) {
         playerTwoPointCount += points
         playerTwoPoints.text = "\(playerTwoPointCount)"
-        messageDisplay.text = "Player Two rolled \(points), they now have \(playerTwoPointCount) points! Roll or Finish Turn."
+        
+        if !checkForGoal(){
+            messageDisplay.text = "Player Two rolled \(points), they now have \(playerTwoPointCount) points! Roll or Finish Turn."
+        }else {
+            endGameMessage()
+        }
+        
     }
     
     func checkForOne(_ rolledNumber: Int) -> Bool{
@@ -89,6 +128,7 @@ class ViewController: UIViewController {
     func playerOneTurn(_ points: Int){
         if !checkForOne(points){
                        storedPointsPerRound += points
+                       updateStoredPointsLabel()
                        handlePlayerOneAddPoints(points)
                    }else {
                        messageDisplay.text = "Player One got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost! Player Two, it's your turn!"
@@ -97,12 +137,14 @@ class ViewController: UIViewController {
                        playerOnePlaying = false
                        playerTwoPlaying = true
                        storedPointsPerRound = 0
+            clearStoredPointsLabel()
                    }
     }
     
     func playerTwoTurn(_ points: Int){
         if !checkForOne(points){
                              storedPointsPerRound += points
+                             updateStoredPointsLabel()
                              handlePlayerTwoAddPoints(points)
                          }else {
                              messageDisplay.text = "Player Two got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost! Player One, it's your turn!"
@@ -111,6 +153,7 @@ class ViewController: UIViewController {
                              playerTwoPlaying = false
                              playerOnePlaying = true
                              storedPointsPerRound = 0
+            clearStoredPointsLabel()
                          }
     }
     
