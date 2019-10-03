@@ -18,14 +18,25 @@ class ViewController: UIViewController {
     var playerOnePlaying = true
     var playerTwoPlaying = false
     
+    var playerOnePointCount : Int = 0
+    var playerTwoPointCount : Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         messageDisplay.numberOfLines = 0
+        introduction()
         // Do any additional setup after loading the view.
     }
     
     @IBAction func rollRandomNumber(_ sender: Any) {
-        messageDisplay.text = "\(getRandomNumber())"
+        let points = getRandomNumber()
+        
+        if playerOnePlaying {
+            handlePlayerOneAddPoints(points)
+        }else {
+            handlePlayerTwoAddPoints(points)
+        }
+        
     }
     
     @IBAction func finishTurn(_ sender: Any) {
@@ -36,24 +47,38 @@ class ViewController: UIViewController {
         }
     }
     
-    func handlePlayerOneFinish(){
-        playerOnePlaying.toggle()
-        playerTwoPlaying.toggle()
-        messageDisplay.text = "Player One has ended their turn"
-    }
-    
-    func handlePlayerTwoFinish(){
-        playerTwoPlaying.toggle()
-        playerOnePlaying.toggle()
-        messageDisplay.text = "Player Two has ended their turn"
-    }
-    
     func introduction (){
         if newGame {
             messageDisplay.text = "Player One, roll or finish turn!"
         }
         newGame.toggle()
     }
+    
+    func handlePlayerOneFinish(){
+        playerOnePlaying.toggle()
+        playerTwoPlaying.toggle()
+        messageDisplay.text = "Player One has ended their turn. Player Two, roll or finish turn."
+    }
+    
+    func handlePlayerTwoFinish(){
+        playerTwoPlaying.toggle()
+        playerOnePlaying.toggle()
+        messageDisplay.text = "Player Two has ended their turn. Player One, roll or finish turn."
+    }
+    
+    func handlePlayerOneAddPoints(_ points: Int) {
+        playerOnePointCount += points
+        playerOnePoints.text = "\(playerOnePointCount)"
+        messageDisplay.text = "Player One rolled \(points), they now have \(playerOnePointCount) points! Roll or Finish Turn."
+    }
+    
+    func handlePlayerTwoAddPoints(_ points: Int) {
+        playerTwoPointCount += points
+        playerTwoPoints.text = "\(playerTwoPointCount)"
+        messageDisplay.text = "Player One rolled \(points), they now have \(playerTwoPointCount) points! Roll or Finish Turn."
+    }
+    
+    
     
     
     func getRandomNumber () -> Int {
