@@ -95,6 +95,7 @@ class ViewController: UIViewController {
                        playerOnePointCount -= storedPointsPerRound
                        playerOnePoints.text = "\(playerOnePointCount)"
                        playerOnePlaying = false
+                       playerTwoPlaying = true
                        storedPointsPerRound = 0
                    }
     }
@@ -108,6 +109,7 @@ class ViewController: UIViewController {
                              playerTwoPointCount -= storedPointsPerRound
                              playerTwoPoints.text = "\(playerTwoPointCount)"
                              playerTwoPlaying = false
+                             playerOnePlaying = true
                              storedPointsPerRound = 0
                          }
     }
