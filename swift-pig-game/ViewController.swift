@@ -72,6 +72,7 @@ class ViewController: UIViewController {
         playerOnePoints.text = "0"
         playerTwoPointCount = 0
         playerTwoPoints.text = "0"
+        storedPointsPerRound = 0
         goalDisplay.text = "Try to get to \(goal)!"
         messageDisplay.text = "Player One, roll or finish turn!"
         storedPoints.text = "Try to reach the goal before the other player. If you roll a 1, you will lose all points accumulated in round. Good luck!"
