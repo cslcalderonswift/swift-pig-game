@@ -35,6 +35,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func startGameOver(_ sender: Any) {
+        introduction()
+    }
     @IBAction func rollRandomNumber(_ sender: Any) {
         if !checkForGoal() {
             let points = getRandomNumber()
@@ -64,6 +67,16 @@ class ViewController: UIViewController {
         
     }
     
+    func introduction (){
+        playerOnePointCount = 0
+        playerOnePoints.text = "0"
+        playerTwoPointCount = 0
+        playerTwoPoints.text = "0"
+        goalDisplay.text = "Try to get to \(goal)!"
+        messageDisplay.text = "Player One, roll or finish turn!"
+        storedPoints.text = "Try to reach the goal before the other player. If you roll a 1, you will lose all points accumulated in round. Good luck!"
+    }
+    
     func checkForGoal() -> Bool{
         if playerOnePointCount >= goal {
             messageDisplay.text = "Player One won!"
@@ -87,12 +100,7 @@ class ViewController: UIViewController {
         storedPoints.text = "Click Start Over to Play Again!"
     }
     
-    func introduction (){
-        playerOnePointCount = 0
-        playerTwoPointCount = 0
-        goalDisplay.text = "Try to get to \(goal)!"
-        messageDisplay.text = "Player One, roll or finish turn!"
-    }
+    
     
     func handlePlayerOneFinish(){
         playerOnePlaying.toggle()
