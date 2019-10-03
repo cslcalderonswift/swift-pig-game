@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     
     var storedPointsPerRound = 0
     
-    let goal = 100
+    let goal = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,9 +80,11 @@ class ViewController: UIViewController {
     
     func checkForGoal() -> Bool{
         if playerOnePointCount >= goal {
+            changeMessagedisplayForPrompting()
             messageDisplay.text = "Player One won!"
             return true
         }else if playerTwoPointCount >= goal {
+            changeMessagedisplayForPrompting()
             messageDisplay.text = "Player Two won!"
             return true
         }
@@ -120,6 +122,7 @@ class ViewController: UIViewController {
         playerOnePoints.text = "\(playerOnePointCount)"
         
         if !checkForGoal() {
+            changeMessagedisplayForPlayerOne()
             messageDisplay.text = "Player One rolled \(points), they now have \(playerOnePointCount) points! Roll or Finish Turn."
         }else {
             endGameMessage()
@@ -132,6 +135,7 @@ class ViewController: UIViewController {
         playerTwoPoints.text = "\(playerTwoPointCount)"
         
         if !checkForGoal(){
+            changeMessagedisplayForPlayerTwo()
             messageDisplay.text = "Player Two rolled \(points), they now have \(playerTwoPointCount) points! Roll or Finish Turn."
         }else {
             endGameMessage()
@@ -175,6 +179,18 @@ class ViewController: UIViewController {
                          }
     }
     
+    
+    func changeMessagedisplayForPlayerOne() {
+        messageDisplay.textColor = .darkGray
+    }
+    
+    func changeMessagedisplayForPlayerTwo() {
+        messageDisplay.textColor = .gray
+    }
+    
+    func changeMessagedisplayForPrompting() {
+        messageDisplay.textColor = .magenta
+    }
     
     
     
