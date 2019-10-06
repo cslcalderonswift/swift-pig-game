@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var messageDisplay: UILabel!
     @IBOutlet weak var storedPoints: UILabel!
     @IBOutlet weak var goalDisplay: UILabel!
+    @IBOutlet weak var playerTurn: UILabel!
     
     var playerOnePlaying = true
     var playerTwoPlaying = false
@@ -31,6 +32,7 @@ class ViewController: UIViewController {
         messageDisplay.numberOfLines = 0
         storedPoints.numberOfLines = 0
         goalDisplay.numberOfLines = 0
+        playerTurn.numberOfLines = 0
         introduction()
         // Do any additional setup after loading the view.
     }
@@ -105,20 +107,29 @@ class ViewController: UIViewController {
         storedPoints.text = "Click Start Over to Play Again!"
     }
     
+    func playerLabelPlayerOne() {
+         playerTurn.text = "Player One, roll or finish turn."
+    }
+    
+    func playerLabelPlayerTwo() {
+         playerTurn.text = "Player Two, roll or finish turn."
+    }
     
     
     func handlePlayerOneFinish(){
         playerOnePlaying.toggle()
         playerTwoPlaying.toggle()
         changeMessageDisplayForPlayerTwo()
-        messageDisplay.text = "Player One has ended their turn. Player Two, roll or finish turn."
+        messageDisplay.text = "Player One has ended their turn."
+        playerTurn.text = "Player Two, roll or finish turn."
     }
     
     func handlePlayerTwoFinish(){
         playerTwoPlaying.toggle()
         playerOnePlaying.toggle()
         changeMessageDisplayForPlayerOne()
-        messageDisplay.text = "Player Two has ended their turn. Player One, roll or finish turn."
+        messageDisplay.text = "Player Two has ended their turn."
+        playerLabelPlayerOne()
     }
     
     func handlePlayerOneAddPoints(_ points: Int) {
@@ -127,7 +138,8 @@ class ViewController: UIViewController {
         
         if !checkForGoal() {
             changeMessageDisplayForPlayerOne()
-            messageDisplay.text = "Player One rolled \(points), they now have \(playerOnePointCount) points! Roll or Finish Turn."
+            messageDisplay.text = "Player One rolled \(points), they now have \(playerOnePointCount) points!"
+           playerLabelPlayerOne()
         }else {
             endGameMessage()
         }
@@ -140,7 +152,8 @@ class ViewController: UIViewController {
         
         if !checkForGoal(){
             changeMessageDisplayForPlayerTwo()
-            messageDisplay.text = "Player Two rolled \(points), they now have \(playerTwoPointCount) points! Roll or Finish Turn."
+            messageDisplay.text = "Player Two rolled \(points), they now have \(playerTwoPointCount) points!"
+             playerLabelPlayerTwo()
         }else {
             endGameMessage()
         }
@@ -158,7 +171,8 @@ class ViewController: UIViewController {
                        handlePlayerOneAddPoints(points)
                    }else {
                        changeMessageDisplayForPiggy()
-                       messageDisplay.text = "Player One got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost! Player Two, it's your turn!"
+                       messageDisplay.text = "Player One got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost!"
+                            playerLabelPlayerTwo()
                        playerOnePointCount -= storedPointsPerRound
                        playerOnePoints.text = "\(playerOnePointCount)"
                        playerOnePlaying = false
@@ -175,7 +189,9 @@ class ViewController: UIViewController {
                              handlePlayerTwoAddPoints(points)
                          }else {
                             changeMessageDisplayForPiggy()
-                             messageDisplay.text = "Player Two got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost! Player One, it's your turn!"
+                             messageDisplay.text = "Player Two got piggy! They rolled a 1. \(storedPointsPerRound) points have been lost!"
+                            playerLabelPlayerOne()
+            
                              playerTwoPointCount -= storedPointsPerRound
                              playerTwoPoints.text = "\(playerTwoPointCount)"
                              playerTwoPlaying = false
