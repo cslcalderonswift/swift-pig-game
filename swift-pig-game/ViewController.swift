@@ -79,7 +79,8 @@ class ViewController: UIViewController {
         
         changeMessageDisplayForPlayerOne()
         messageDisplay.text = "Player One, roll or finish turn!"
-        storedPoints.text = "Try to reach the goal before the other player. If you roll a 1, you will lose all points accumulated in round. Good luck!"
+        storedPoints.numberOfLines = 0
+        storedPoints.text = "Try to reach the goal before the other player. If you roll a 1, you will lose all points accumulated in round."
     }
     
     func checkForGoal() -> Bool{
